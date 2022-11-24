@@ -2,24 +2,18 @@
 
 namespace App\Http\Livewire\Table;
 
-use App\Models\HideableColumn;
-use App\Models\DataDosen;
-use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Column;
 use App\Http\Livewire\Table\LivewireDatatable;
-use App\Models\DataMahasiswa;
-use App\Models\QustionAnswer;
 use App\Models\QustionAnswerDetail;
 
 class MahaSiswaListQuisionerTable  extends LivewireDatatable
 {
   protected $listeners = ['refreshTable'];
-  public $hideable = 'select';
-  public $hide = [];
-
+  public $params;
 
   public function builder()
   {
+    dd($this->params);
     return QustionAnswerDetail::query()->where('qustion_answer_details.user_id', $this->params['user_id'])->where('qustion_answer_details.data_jadwal_id', $this->params['quis_id'])->groupBy('qustion_answer_details.user_id');
   }
 
