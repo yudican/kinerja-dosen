@@ -9,7 +9,7 @@
   @endif
   @endif
 
-  @if (isset($extras) && in_array($extras))
+  @if (isset($extras) && is_array($extras))
   @foreach ($collection as $item)
   {{$item}}
   @endforeach
