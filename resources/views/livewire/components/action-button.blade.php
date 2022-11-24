@@ -11,7 +11,7 @@
 
   @if (isset($extras) && is_array($extras))
   @foreach ($extras as $item)
-  {{$item}}
+  {!! $item !!}
   @endforeach
   @endif
 
