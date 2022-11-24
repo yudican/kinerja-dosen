@@ -26,7 +26,7 @@ class MahaSiswaListQuisionerTable  extends LivewireDatatable
   public function columns()
   {
     return [
-      Column::name('user.mahasiswa.kode_mahasswa')->label('Nim')->searchable(),
+      Column::name('user.mahasiswa.kode_mahasiswa')->label('Nim')->searchable(),
       Column::name('user.name')->label('Nama Mahasiswa')->searchable(),
 
       Column::callback(['option_question_id'], function ($option_question_id) {
