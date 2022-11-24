@@ -2,12 +2,17 @@
   @if (auth()->user()->hasTeamPermission($curteam, $segment.':update') ||
   auth()->user()->hasTeamPermission($curteam, $segment.':delete'))
   @if (auth()->user()->hasTeamPermission($curteam, $segment.':update'))
-  <button class="btn btn-success btn-sm mr-2" wire:click="getDataById('{{ $id }}')" id="btn-edit-{{ $id }}"><i
-      class="fas fa-edit"></i></button>
+  <button class="btn btn-success btn-sm mr-2" wire:click="getDataById('{{ $id }}')" id="btn-edit-{{ $id }}"><i class="fas fa-edit"></i></button>
   @endif
   @if (auth()->user()->hasTeamPermission($curteam, $segment.':delete'))
-  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm-modal"
-    wire:click="getId('{{ $id }}')" id="btn-delete-{{ $id }}"><i class="fas fa-trash"></i></button>
+  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm-modal" wire:click="getId('{{ $id }}')" id="btn-delete-{{ $id }}"><i class="fas fa-trash"></i></button>
   @endif
   @endif
+
+  @if (isset($extras) && in_array($extras))
+  @foreach ($collection as $item)
+  {{$item}}
+  @endforeach
+  @endif
+
 </div>

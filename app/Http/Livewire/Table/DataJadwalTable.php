@@ -22,7 +22,7 @@ class DataJadwalTable extends LivewireDatatable
     {
         $user = auth()->user();
         $role = $user->role->role_type;
-      
+
         if (in_array($role, ['admin', 'superadmin', 'dekan'])) {
             if ($this->semester_id) {
                 return DataJadwal::query()->where('data_jadwal.data_semester_id', $this->semester_id);
@@ -30,13 +30,13 @@ class DataJadwalTable extends LivewireDatatable
             return DataJadwal::query();
         } else if ($role == 'dosen') {
             if ($this->semester_id) {
-                return DataJadwal::query()->whereHas('dosen', function($query) use($user) {
+                return DataJadwal::query()->whereHas('dosen', function ($query) use ($user) {
                     return $query->where('user_id', $user->id);
                 })->where('data_semester_id', $this->semester_id);
             }
-            return DataJadwal::query()->whereHas('dosen', function($query) use($user) {
-                    return $query->where('user_id', $user->id);
-                });
+            return DataJadwal::query()->whereHas('dosen', function ($query) use ($user) {
+                return $query->where('user_id', $user->id);
+            });
         } else {
             if ($user->mahasiswa) {
                 $data_prodi_id = $user->mahasiswa->data_prodi_id;
@@ -53,28 +53,39 @@ class DataJadwalTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
-            Column::name('kode_jadwal')->label('Kode Jadwal')->searchable(),
-            Column::name('hari_jadwal')->label('Hari')->searchable(),
-            Column::name('waktu_jadwal')->label('Waktu')->searchable(),
+            // Column::name('kode_jadwal')->label('Kode Jadwal')->searchable(),
+            // Column::name('hari_jadwal')->label('Hari')->searchable(),
+            // Column::name('waktu_jadwal')->label('Waktu')->searchable(),
             Column::name('matakuliah.nama_matakuliah')->label('Matakuliah')->searchable(),
-            Column::name('kelas.kode_kelas')->label('Kelas')->searchable(),
+            // Column::name('kelas.kode_kelas')->label('Kelas')->searchable(),
             Column::name('dosen.nama_dosen')->label('Dosen')->searchable(),
-            Column::name('prodi.nama_prodi')->label('Prodi')->searchable(),
+            // Column::name('prodi.nama_prodi')->label('Prodi')->searchable(),
             Column::name('semester.kode_semester')->label('Semester')->searchable(),
 
             Column::callback(['id'], function ($id) {
                 $user = auth()->user();
+                $data = [
+                    'id' => $id,
+                    'segment' => $this->params,
+                ];
+
+                $data['extras'] = [
+                    '<a href="' . route('quisioner.detail', ['id' => $id, 'user_id' => $user->id]) . '" class="btn btn-success btn-sm">Detail</a>'
+                ];
                 if ($user->role->role_type == 'mahasiswa') {
                     $quisioner = QustionAnswerDetail::whereDataJadwalId($id)->whereUserId($user->id)->first();
                     if ($quisioner) {
                         return '<button class="btn btn-success btn-sm">Sudah Mengisi</button>';
                     }
-                    return '<a href="' . route('quisioner.atemps', ['id' => $id]) . '" class="btn btn-primary btn-sm">Mulai Quisioner</a>';
+                    $data['extras'] = [];
+                    return '<a href="' . route('quisioner.atemps', ['id' => $id, 'user_id' => $user->id]) . '" class="btn btn-primary btn-sm">Mulai Quisioner</a>';
                 }
-                return view('livewire.components.action-button', [
-                    'id' => $id,
-                    'segment' => $this->params
-                ]);
+
+                $data['extras'] = [
+                    '<a href="' . route('quisioner.detail', ['id' => $id, 'user_id' => $user->id]) . '" class="btn btn-success btn-sm">Detail</a>'
+                ];
+
+                return view('livewire.components.action-button', $data);
             })->label(__('Aksi')),
         ];
     }

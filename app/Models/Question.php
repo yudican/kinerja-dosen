@@ -17,6 +17,8 @@ class Question extends Model
 
     protected $dates = [];
 
+    protected $append = ['answer_jawaban'];
+
     /**
      * Get all of the optionQuestions for the Question
      *
@@ -25,5 +27,19 @@ class Question extends Model
     public function optionQuestions()
     {
         return $this->hasMany(OptionQuestion::class);
+    }
+
+    /**
+     * Get all of the qustionAnswers for the Question
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
+    public function getAnswerJawabanAttribute()
+    {
+        $question = $this->qustionAnswers()->first();
+        if ($question) {
+            return $question->nama_jawaban;
+        }
     }
 }
