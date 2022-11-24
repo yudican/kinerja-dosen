@@ -13,7 +13,8 @@
         </div>
         <div class="col-md-12">
             @livewire('maha-siswa-list-quisioner.blade-table', ['params' => [
-            'quis_id' => $user_id
+            'quis_id' => $quis_id,
+            'user_id' => $user_id,
             ]])
         </div>
     </div>
