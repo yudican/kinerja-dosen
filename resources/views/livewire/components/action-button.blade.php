@@ -10,7 +10,7 @@
   @endif
 
   @if (isset($extras) && is_array($extras))
-  @foreach ($collection as $item)
+  @foreach ($extras as $item)
   {{$item}}
   @endforeach
   @endif
