@@ -14,7 +14,6 @@
         <div class="col-md-12">
             @livewire('table.maha-siswa-list-quisioner-table', ['params' => [
             'quis_id' => $quis_id,
-            'user_id' => $user_id,
             ]])
         </div>
     </div>

@@ -13,7 +13,7 @@ class MahaSiswaListQuisionerTable  extends LivewireDatatable
 
   public function builder()
   {
-    return QustionAnswerDetail::query()->where('qustion_answer_details.user_id', $this->params['user_id'])->where('qustion_answer_details.data_jadwal_id', $this->params['quis_id'])->groupBy('qustion_answer_details.user_id');
+    return QustionAnswerDetail::query()->where('qustion_answer_details.data_jadwal_id', $this->params['quis_id'])->groupBy('qustion_answer_details.user_id');
   }
 
   public function columns()
