@@ -23,10 +23,10 @@
                     <div class="pt-2">
                         <div class="ml-md-1 ml-sm-1 pl-md-3 pt-sm-0 pt-3" id="jawaban-{{$question->id}}">
                             <ul style="list-style-type:disc;">
-                                @foreach ($answers as $item)
-                                @if ($question->getJawaban($item->option_question_id))
-                                <li>{{$item->option_question_id}} - {{$question->getJawaban($item->option_question_id)}}</li>
-                                @endif
+                                @foreach ($question->optionQuestions() as $item)
+                                <li>{{$item->whereHas('questionAnswer',function($query) use ($user_id) {
+                                    $query->where('user_id',$user_id)
+                                    })->nama_jawaban}}</li>
                                 @endforeach
 
                             </ul>

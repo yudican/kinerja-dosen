@@ -18,4 +18,14 @@ class OptionQuestion extends Model
     {
         return $this->belongsTo(Question::class);
     }
+
+    /**
+     * Get all of the questionAnswer for the OptionQuestion
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questionAnswer()
+    {
+        return $this->hasMany(QustionAnswerDetail::class, 'option_question_id');
+    }
 }
