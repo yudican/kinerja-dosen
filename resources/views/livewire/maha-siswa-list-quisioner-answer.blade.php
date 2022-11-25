@@ -25,7 +25,7 @@
                             <ul style="list-style-type:disc;">
                                 @foreach ($answers as $item)
                                 @if ($question->getJawaban($item->option_question_id))
-                                <li>{{$item->id}} - {{$question->getJawaban($item->option_question_id)}}</li>
+                                <li>{{$item->option_question_id}} - {{$question->getJawaban($item->option_question_id)}}</li>
                                 @endif
                                 @endforeach
 

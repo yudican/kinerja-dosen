@@ -36,7 +36,7 @@ class Question extends Model
 
     public function getJawaban($answer_id)
     {
-        $question = $this->optionQuestions()->where('id', $answer_id)->first();
+        $question = OptionQuestion::where('id', $answer_id)->first();
         if ($question) {
             return $question->nama_jawaban;
         }
