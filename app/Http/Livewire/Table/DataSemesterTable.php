@@ -25,8 +25,9 @@ class DataSemesterTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
+            Column::name('id')->label('No.'),
             Column::name('kode_semester')->label('Kode Semester')->searchable(),
-Column::name('nama_semester')->label('Nama Semester')->searchable(),
+            Column::name('nama_semester')->label('Nama Semester')->searchable(),
 
             Column::callback(['id'], function ($id) {
                 return view('livewire.components.action-button', [

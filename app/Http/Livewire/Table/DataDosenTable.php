@@ -25,6 +25,7 @@ class DataDosenTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
+            Column::name('id')->label('No.'),
             Column::name('kode_dosen')->label('NIDN')->searchable(),
             Column::name('nama_dosen')->label('Nama Dosen')->searchable(),
             // Column::name('email_dosen')->label('Email Dosen')->searchable(),

@@ -32,6 +32,7 @@ class PerubahanJadwalTable extends LivewireDatatable
   {
     $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
     return [
+      Column::name('id')->label('No.'),
       Column::name('jadwal.kode_jadwal')->label('Kode Jadwal'),
       Column::name('hari_perubahan')->label('Hari'),
       Column::name('jam_perubahan')->label('Waktu'),

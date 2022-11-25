@@ -25,6 +25,7 @@ class DataMahasiswaTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
+            Column::name('id')->label('No.'),
             Column::name('nama_mahasiswa')->label('Nama Mahasiswa')->searchable(),
             Column::name('kode_mahasiswa')->label('NIM')->searchable(),
             Column::name('semester.kode_semester')->label('Semester')->searchable(),

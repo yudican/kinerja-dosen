@@ -25,6 +25,7 @@ class DataKelasTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
+            Column::name('id')->label('No.'),
             Column::name('kode_kelas')->label('Kode Kelas')->searchable(),
             Column::name('nama_kelas')->label('Nama Kelas')->searchable(),
             Column::name('prodi.nama_prodi')->label('Prodi')->searchable(),
