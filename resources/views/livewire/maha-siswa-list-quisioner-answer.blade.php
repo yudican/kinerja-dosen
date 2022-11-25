@@ -17,14 +17,16 @@
             @foreach ($question_lists as $keys => $question)
             <div class="card">
                 <div class="card-header flex flex-row justify-between items-center">
-                    <h2 class="card-header-title"><b>Jawaban Pertanyaan</b></h2>
+                    <h2 class="card-header-title"><b>{{$question->pertanyaan}}</b></h2>
                 </div>
                 <div class="card-body">
                     <div class="pt-2">
                         <div class="ml-md-1 ml-sm-1 pl-md-3 pt-sm-0 pt-3" id="jawaban-{{$question->id}}">
                             <ul style="list-style-type:disc;">
                                 @foreach ($answers as $item)
+                                @if ($question->getJawaban($item->option_question_id))
                                 <li>{{$question->getJawaban($item->option_question_id)}}</li>
+                                @endif
                                 @endforeach
 
                             </ul>

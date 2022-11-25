@@ -40,5 +40,7 @@ class Question extends Model
         if ($question) {
             return $question->nama_jawaban;
         }
+
+        return null;
     }
 }
