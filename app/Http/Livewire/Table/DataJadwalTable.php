@@ -70,7 +70,7 @@ class DataJadwalTable extends LivewireDatatable
                 ];
 
                 $data['extras'] = [
-                    '<a href="' . route('quisioner.detail', ['id' => $id, 'user_id' => $user->id]) . '" class="btn btn-success btn-sm">Detail</a>'
+                    '<a href="' . route('quisioner.detail', ['quis_id' => $id]) . '" class="btn btn-success btn-sm ml-2">Detail</a>'
                 ];
                 if ($user->role->role_type == 'mahasiswa') {
                     $quisioner = QustionAnswerDetail::whereDataJadwalId($id)->whereUserId($user->id)->first();
@@ -81,9 +81,6 @@ class DataJadwalTable extends LivewireDatatable
                     return '<a href="' . route('quisioner.atemps', ['id' => $id, 'user_id' => $user->id]) . '" class="btn btn-primary btn-sm">Mulai Quisioner</a>';
                 }
 
-                $data['extras'] = [
-                    '<a href="' . route('quisioner.detail', ['id' => $id, 'user_id' => $user->id]) . '" class="btn btn-success btn-sm">Detail</a>'
-                ];
 
                 return view('livewire.components.action-button', $data);
             })->label(__('Aksi')),
