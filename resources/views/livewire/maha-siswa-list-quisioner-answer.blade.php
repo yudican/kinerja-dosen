@@ -25,7 +25,7 @@
                             <ul style="list-style-type:disc;">
                                 @foreach ($answers as $item)
                                 <li>{{$item->whereHas('optionQuestion',function($query) use ($question) {
-                                    $query->where('question_id',$question->id)
+                                    $query->where('question_id',$question->id);
                                     })->first()->nama_jawaban}}</li>
                                 @endforeach
 
