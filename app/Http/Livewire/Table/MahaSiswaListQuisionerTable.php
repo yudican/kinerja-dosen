@@ -22,8 +22,8 @@ class MahaSiswaListQuisionerTable  extends LivewireDatatable
       Column::name('user.mahasiswa.kode_mahasiswa')->label('Nim')->searchable(),
       Column::name('user.name')->label('Nama Mahasiswa')->searchable(),
 
-      Column::callback(['option_question_id'], function ($option_question_id) {
-        return '<a href="' . route('quisioner.detail.answer', ['option_question_id' => $option_question_id]) . '" class="btn btn-primary btn-sm">Detail</a>';
+      Column::callback(['option_question_id', 'user_id'], function ($option_question_id, $user_id) {
+        return '<a href="' . route('quisioner.detail.answer', ['id' => $option_question_id, 'user_id' => $user_id]) . '" class="btn btn-primary btn-sm">Detail</a>';
       })->label(__('Aksi')),
     ];
   }
