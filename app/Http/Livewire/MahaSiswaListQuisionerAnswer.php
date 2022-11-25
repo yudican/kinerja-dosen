@@ -21,7 +21,7 @@ class MahaSiswaListQuisionerAnswer extends Component
     {
         return view('livewire.maha-siswa-list-quisioner-answer', [
             'question_lists' => Question::all(),
-            'answers' => QustionAnswerDetail::where('user_id', $this->user_id)->all()
+            'answers' => QustionAnswerDetail::where('user_id', $this->user_id)->get()
         ]);
     }
 }
