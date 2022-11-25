@@ -7,7 +7,7 @@ use Livewire\Component;
 class MahaSiswaListQuisioner extends Component
 {
     public $quis_id;
-    public function mount($id, $user_id)
+    public function mount($id)
     {
         $this->quis_id = $id;
     }
