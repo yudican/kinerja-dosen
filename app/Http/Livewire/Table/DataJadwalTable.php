@@ -70,7 +70,7 @@ class DataJadwalTable extends LivewireDatatable
                 ];
 
                 $data['extras'] = [
-                    '<a href="' . route('quisioner.detail.answer', ['quis_id' => $id]) . '" class="btn btn-success btn-sm ml-2">Detail</a>'
+                    '<a href="' . route('quisioner.detail', ['quis_id' => $id]) . '" class="btn btn-success btn-sm ml-2">Detail</a>'
                 ];
                 if ($user->role->role_type == 'mahasiswa') {
                     $quisioner = QustionAnswerDetail::whereDataJadwalId($id)->whereUserId($user->id)->first();
