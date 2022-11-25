@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Question;
+use App\Models\QustionAnswerDetail;
 use Livewire\Component;
 
 class MahaSiswaListQuisionerAnswer extends Component
@@ -20,6 +21,7 @@ class MahaSiswaListQuisionerAnswer extends Component
     {
         return view('livewire.maha-siswa-list-quisioner-answer', [
             'question_lists' => Question::all(),
+            'answers' => QustionAnswerDetail::where('user_id', $this->user_id)->all()
         ]);
     }
 }

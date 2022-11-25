@@ -17,7 +17,6 @@ class Question extends Model
 
     protected $dates = [];
 
-    protected $append = ['answer_jawaban'];
 
     /**
      * Get all of the optionQuestions for the Question
@@ -35,9 +34,9 @@ class Question extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
 
-    public function getAnswerJawabanAttribute()
+    public function getJawaban($answer_id)
     {
-        $question = $this->qustionAnswers()->first();
+        $question = $this->optionQuestions()->where('id', $answer_id)->first();
         if ($question) {
             return $question->nama_jawaban;
         }
