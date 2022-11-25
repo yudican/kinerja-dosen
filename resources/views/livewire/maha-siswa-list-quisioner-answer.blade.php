@@ -24,9 +24,9 @@
                         <div class="ml-md-1 ml-sm-1 pl-md-3 pt-sm-0 pt-3" id="jawaban-{{$question->id}}">
                             <ul style="list-style-type:disc;">
                                 @foreach ($answers as $item)
-                                <li>{{dd($item->whereHas('optionQuestion',function($query) use ($question) {
-                                    $query->where('question_id',$question->id);
-                                    }))}}</li>
+                                {{dd($item->whereHas('optionQuestion',function($query) use ($question) {
+                                $query->where('question_id',$question->id);
+                                }))}}
                                 @endforeach
                             </ul>
                         </div>
