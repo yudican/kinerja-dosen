@@ -25,7 +25,7 @@
                             <ul style="list-style-type:disc;">
                                 @foreach ($question->optionQuestions as $item)
                                 @foreach ($item->questionAnswer()->where('user_id',$user_id)->get() as $answer)
-                                <li> {{$question->getJawaban($answer->option_question_id)}}</li>
+                                <li>{{$answer->option_question_id}} - {{$question->getJawaban($answer->option_question_id)}}</li>
                                 @endforeach
                                 @endforeach
                             </ul>
