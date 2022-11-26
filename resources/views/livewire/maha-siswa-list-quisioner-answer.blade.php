@@ -25,7 +25,7 @@
                             <ul style="list-style-type:disc;">
                                 @foreach ($question->optionQuestions as $item)
                                 @if ($item->questionAnswer()->where('user_id',$user_id)->where('option_question_id',$item->id)->first())
-                                <li class="text-success">{{$item->nama_jawaban}}</li>
+                                <li class="text-success">{{$item->id}} - {{$item->nama_jawaban}}</li>
                                 @else
                                 <li>{{$item->nama_jawaban}}</li>
                                 @endif
