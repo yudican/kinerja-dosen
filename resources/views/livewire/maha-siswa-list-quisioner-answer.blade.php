@@ -24,10 +24,12 @@
                         <div class="ml-md-1 ml-sm-1 pl-md-3 pt-sm-0 pt-3" id="jawaban-{{$question->id}}">
                             <ul style="list-style-type:disc;">
                                 @foreach ($question->optionQuestions as $item)
+                                @if ($item->questionAnswer()->where('user_id',$user_id)->where('option_question_id',$item->id)->first())
+                                <li class="text-success">{{$item->nama_jawaban}}</li>
+                                @else
                                 <li>{{$item->nama_jawaban}}</li>
-                                {{-- @foreach ($item->questionAnswer()->where('user_id',$user_id)->get() as $answer)
-                                <li>{{$answer->option_question_id}} - {{$question->getJawaban($answer->option_question_id)}}</li>
-                                @endforeach --}}
+                                @endif
+
                                 @endforeach
                             </ul>
                         </div>
