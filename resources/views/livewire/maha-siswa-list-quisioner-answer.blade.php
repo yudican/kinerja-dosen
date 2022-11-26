@@ -24,7 +24,7 @@
                         <div class="ml-md-1 ml-sm-1 pl-md-3 pt-sm-0 pt-3" id="jawaban-{{$question->id}}">
                             <ul style="list-style-type:disc;">
                                 @foreach ($question->optionQuestions as $item)
-                                @foreach ($item->questionAnswer()->where('user_id',$user_id) as $answer)
+                                @foreach ($item->questionAnswer()->where('user_id',$user_id)->get() as $answer)
                                 <li> {{$answer->nama_jawaban}}</li>
                                 @endforeach
                                 @endforeach
