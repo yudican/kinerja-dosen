@@ -23,11 +23,11 @@
                     <div class="pt-2">
                         <div class="ml-md-1 ml-sm-1 pl-md-3 pt-sm-0 pt-3" id="jawaban-{{$question->id}}">
                             <ul style="list-style-type:disc;">
-                                {{-- @foreach ($answers as $item)
-                                {{dd($item->whereHas('optionQuestion',function($query) use ($question) {
-                                $query->where('question_id',$question->id);
-                                }))}}
-                                @endforeach --}}
+                                @foreach ($question->optionQuestions as $item)
+                                @foreach ($item->questionAnswer()->where('user_id',$iser_id) as $answer)
+                                <li> {{$answer->nama_jawaban}}</li>
+                                @endforeach
+                                @endforeach
                             </ul>
                         </div>
                     </div>
