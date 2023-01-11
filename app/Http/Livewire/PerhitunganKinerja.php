@@ -30,8 +30,8 @@ class PerhitunganKinerja extends Component
             //     $attribute->optionQuestion->bobot_jawaban;
             // }
         }
-// dd($dataset);
-        $space = new Space(28);
+        // dd($dataset);
+        $space = new Space(count($dataset[0]));
         // $kmeans = new KMeans(3, KMeans::INIT_RANDOM);
         // add points to space
         foreach ($dataset as $i => $coordinates) {
