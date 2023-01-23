@@ -37,6 +37,15 @@ class DataJadwalTable extends LivewireDatatable
             return DataJadwal::query()->whereHas('dosen', function ($query) use ($user) {
                 return $query->where('user_id', $user->id);
             });
+        } else if ($role == 'mahasiswa') {
+            if ($this->semester_id) {
+                return DataJadwal::query()->whereDoesntHave('qustionAnswerDetails', function ($query) use ($user) {
+                    return $query->where('user_id', $user->id);
+                })->where('data_semester_id', $this->semester_id);
+            }
+            return DataJadwal::query()->whereDoesntHave('qustionAnswerDetails', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            });
         } else {
             if ($user->mahasiswa) {
                 $data_prodi_id = $user->mahasiswa->data_prodi_id;

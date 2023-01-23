@@ -4,9 +4,9 @@ namespace App\Http\Livewire;
 
 use App\Models\DataJadwal;
 use App\Models\QustionAnswerDetail;
+use KMeans\Space;
 use Livewire\Component;
-use Phpml\Clustering\KMeans;
-use Phpml\Clustering\KMeans\Space;
+
 
 class PerhitunganKinerja extends Component
 {
@@ -35,7 +35,9 @@ class PerhitunganKinerja extends Component
         // $kmeans = new KMeans(3, KMeans::INIT_RANDOM);
         // add points to space
         foreach ($dataset as $i => $coordinates) {
-            $space->addPoint($coordinates);
+            if (count($coordinates) == 28) {
+                $space->addPoint($coordinates);
+            }
         }
 
         // cluster these 50 points in 3 clusters

@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table table-light">
                         <thead class="thead-light">
                             <tr>
@@ -33,8 +33,28 @@
                             <tr>
                                 <td>{{ $item->dosen->nama_dosen }}</td>
                                 @foreach ($item->qustionAnswerDetails as $keys => $attribute)
-                                <td>{{$attribute->optionQuestion->bobot_jawaban}}</td>
-                                @endforeach
+                                @if ($keys < 28) <td>@switch($attribute->optionQuestion->bobot_jawaban)
+                                    @case(1)
+                                    sangat tidak baik
+                                    @break
+                                    @case(2)
+                                    tidak baik
+                                    @break
+                                    @case(3)
+                                    cukup baik
+                                    @break
+                                    @case(4)
+                                    baik
+                                    @break
+                                    @case(5)
+                                    sangat baik
+                                    @break
+                                    @default
+
+                                    @endswitch</td>
+                                    @endif
+
+                                    @endforeach
                             </tr>
                             @endforeach
                         </tbody>
@@ -44,7 +64,7 @@
         </div>
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body  table-responsive">
                     <table class="table table-light">
                         <thead class="thead-light">
                             <tr>
