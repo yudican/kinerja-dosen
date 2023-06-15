@@ -13,6 +13,13 @@
     </div>
     <div class="col-md-12">
       <div class="card">
+        <div class="card-body">
+          <canvas id="answers-chart" style="height: 200px;"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
         <div class="card-body table-responsive">
           <table class="table table-light">
             <thead class="thead-light">
@@ -101,4 +108,57 @@
       </div>
     </div>
   </div>
+
+  @push('scripts')
+  <script src="{{ asset('assets/js/plugin/chart.js/chart.min.js') }}"></script>
+  <script>
+    document.addEventListener('livewire:load', function(e) {
+            function loadChart(chart=[]) {
+                    var pieChart = document.getElementById('answers-chart').getContext('2d')
+                    var myPieChart = new Chart(pieChart, {
+                        type: 'pie',
+                        data: {
+                            datasets: [{
+                                data: chart.values,
+                                backgroundColor :["#1d7af3","#f3545d","#fdaf4b",'#4299e1','#FE0045','#C07EF1','#67C560','#ECC94B'],
+                                borderWidth: 0
+                            }],
+                            labels: chart.labels 
+                        },
+                        options : {
+                            responsive: true, 
+                            maintainAspectRatio: false,
+                            legend: {
+                                position : 'bottom',
+                                labels : {
+                                    fontColor: 'rgb(154, 154, 154)',
+                                    fontSize: 11,
+                                    usePointStyle : true,
+                                    padding: 20
+                                }
+                            },
+                            pieceLabel: {
+                                render: 'percentage',
+                                fontColor: 'white',
+                                fontSize: 14,
+                            },
+                            tooltips: false,
+                            layout: {
+                                padding: {
+                                    left: 20,
+                                    right: 20,
+                                    top: 20,
+                                    bottom: 20
+                                }
+                            }
+                        }
+                })
+                
+            }
+            
+            const dataChart = @json($chartData);
+            loadChart(dataChart);
+        });
+  </script>
+  @endpush
 </div>
