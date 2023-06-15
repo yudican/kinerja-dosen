@@ -72,8 +72,7 @@ class DataPerhitunganTable extends LivewireDatatable
             // Column::name('prodi.nama_prodi')->label('Prodi')->searchable(),
             Column::name('semester.kode_semester')->label('Semester')->searchable(),
 
-            Column::callback(['id', 'data_dosen_id'], function ($id, $data_dosen_id) {
-                $user = auth()->user();
+            Column::callback(['tbl_data_jadwal.id', 'tbl_data_jadwal.data_dosen_id'], function ($id, $data_dosen_id) {
                 $data = [
                     'id' => $id,
                     'segment' => $this->params,
@@ -82,8 +81,6 @@ class DataPerhitunganTable extends LivewireDatatable
                 $data['extras'] = [
                     '<a href="' . route('detail-perhitungan', ['data_dosen_id' => $data_dosen_id]) . '" class="btn btn-success btn-sm ml-2">Detail</a>'
                 ];
-
-
 
                 return view('livewire.components.action-button', $data);
             })->label(__('Aksi')),
