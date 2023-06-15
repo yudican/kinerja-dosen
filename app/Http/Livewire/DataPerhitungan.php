@@ -7,6 +7,11 @@ use Livewire\Component;
 
 class DataPerhitungan extends Component
 {
+  public $route_name;
+  public function mount()
+  {
+    $this->route_name = request()->route()->getName();
+  }
 
   public function render()
   {
