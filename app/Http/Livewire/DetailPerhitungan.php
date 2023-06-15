@@ -11,8 +11,9 @@ use Livewire\Component;
 
 class DetailPerhitungan extends Component
 {
-  public $data;
+  public $perhitungan;
   public $chartData;
+  public $items;
   public $semester_id;
 
   public function mount($data_dosen_id)
@@ -113,9 +114,10 @@ class DetailPerhitungan extends Component
         ]
       ];
     }
-    dd($final_data);
-    $this->data = $final_data;
+
+    $this->perhitungan = $final_data;
     $this->chartData = $charts;
+    $this->items =  $lists;
   }
 
 

@@ -18,7 +18,7 @@
             <thead class="thead-light">
               <tr>
                 <td>Nama</td>
-                @foreach ($data as $key => $item)
+                @foreach ($items as $key => $item)
                 @if ($key == 0)
                 @foreach ($item->qustionAnswerDetails as $keys => $attribute)
                 <td>A{{$keys+1}}</td>
@@ -29,7 +29,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($data as $item)
+              @foreach ($items as $item)
               <tr>
                 <td>{{ $item->dosen->nama_dosen }}</td>
                 @foreach ($item->qustionAnswerDetails as $keys => $attribute)
@@ -69,7 +69,7 @@
             <thead class="thead-light">
               <tr>
                 <td>Nama</td>
-                @foreach ($data as $key => $item)
+                @foreach ($items as $key => $item)
                 @if ($key == 0)
                 @foreach ($perhitungan[$key]['atribut'] as $keys => $atribut)
                 <td>A{{$keys+1}}</td>
@@ -83,7 +83,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($data as $key => $item)
+              @foreach ($items as $key => $item)
               <tr>
                 <td>{{ $item->dosen->nama_dosen }}</td>
                 @foreach ($perhitungan[$key]['atribut'] as $atributa)
