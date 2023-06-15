@@ -63,11 +63,17 @@ class DataPerhitunganTable extends LivewireDatatable
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
             Column::name('id')->label('No.'),
+            // Column::name('kode_jadwal')->label('Kode Jadwal')->searchable(),
+            // Column::name('hari_jadwal')->label('Hari')->searchable(),
+            // Column::name('waktu_jadwal')->label('Waktu')->searchable(),
             Column::name('matakuliah.nama_matakuliah')->label('Matakuliah')->searchable(),
+            // Column::name('kelas.kode_kelas')->label('Kelas')->searchable(),
             Column::name('dosen.nama_dosen')->label('Dosen')->searchable(),
+            // Column::name('prodi.nama_prodi')->label('Prodi')->searchable(),
             Column::name('semester.kode_semester')->label('Semester')->searchable(),
 
             Column::callback(['id', 'data_dosen_id'], function ($id, $data_dosen_id) {
+                $user = auth()->user();
                 $data = [
                     'id' => $id,
                     'segment' => $this->params,
@@ -76,6 +82,8 @@ class DataPerhitunganTable extends LivewireDatatable
                 $data['extras'] = [
                     '<a href="' . route('detail-perhitungan', ['data_dosen_id' => $data_dosen_id]) . '" class="btn btn-success btn-sm ml-2">Detail</a>'
                 ];
+
+
 
                 return view('livewire.components.action-button', $data);
             })->label(__('Aksi')),
