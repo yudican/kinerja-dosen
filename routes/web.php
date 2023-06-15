@@ -7,6 +7,8 @@ use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\DataDosenController;
 use App\Http\Livewire\DataJadwalController;
 use App\Http\Livewire\DataMahasiswaController;
+use App\Http\Livewire\DataPerhitungan;
+use App\Http\Livewire\DetailPerhitungan;
 use App\Http\Livewire\MahaSiswaListQuisioner;
 use App\Http\Livewire\MahaSiswaListQuisionerAnswer;
 use App\Http\Livewire\Master\DataKelasController;
@@ -84,8 +86,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user.authorization']
     });
 
     Route::get('perhitungan-kinerja', PerhitunganKinerja::class)->name('perhitungan-kinerja');
-    Route::get('data-perhitungan', PerhitunganKinerja::class)->name('data-perhitungan');
-    Route::get('detail-perhitungan/{data_dosen_id}', PerhitunganKinerja::class)->name('detail-perhitungan');
+    Route::get('data-perhitungan', DataPerhitungan::class)->name('data-perhitungan');
+    Route::get('detail-perhitungan/{data_dosen_id}', DetailPerhitungan::class)->name('detail-perhitungan');
     Route::get('/update-profile', UpdateProfile::class)->name('update-profile');
 
     Route::get('quisioner-detail/{quis_id}', MahaSiswaListQuisioner::class)->name('quisioner.detail');
