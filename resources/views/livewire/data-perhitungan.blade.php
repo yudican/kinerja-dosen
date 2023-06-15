@@ -14,7 +14,7 @@
 
     </div>
     <div class="col-md-12">
-      <livewire:table.data-jadwal-table params="{{$route_name}}" sort="hari_jadwal|asc" />
+      <livewire:table.data-perhitungan-table params="{{$route_name}}" sort="hari_jadwal|asc" />
     </div>
   </div>
 </div>
