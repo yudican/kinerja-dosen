@@ -113,7 +113,7 @@ class DetailPerhitungan extends Component
         ]
       ];
     }
-
+    dd($this->data);
     $this->data = $final_data;
     $this->chartData = $charts;
   }
