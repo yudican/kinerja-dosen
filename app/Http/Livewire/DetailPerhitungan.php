@@ -35,14 +35,12 @@ class DetailPerhitungan extends Component
       //     $attribute->optionQuestion->bobot_jawaban;
       // }
     }
-    dd($dataset);
+    // dd($dataset);
     $space = new Space(count($dataset[0]));
     // $kmeans = new KMeans(3, KMeans::INIT_RANDOM);
     // add points to space
     foreach ($dataset as $i => $coordinates) {
-      if (count($coordinates) == 28) {
-        $space->addPoint($coordinates);
-      }
+      $space->addPoint($coordinates);
     }
 
     // cluster these 50 points in 3 clusters
