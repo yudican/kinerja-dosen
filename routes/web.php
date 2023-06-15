@@ -84,6 +84,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'user.authorization']
     });
 
     Route::get('perhitungan-kinerja', PerhitunganKinerja::class)->name('perhitungan-kinerja');
+    Route::get('data-perhitungan', PerhitunganKinerja::class)->name('data-perhitungan');
+    Route::get('detail-perhitungan/{data_dosen_id}', PerhitunganKinerja::class)->name('detail-perhitungan');
     Route::get('/update-profile', UpdateProfile::class)->name('update-profile');
 
     Route::get('quisioner-detail/{quis_id}', MahaSiswaListQuisioner::class)->name('quisioner.detail');
