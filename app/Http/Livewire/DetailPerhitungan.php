@@ -68,50 +68,31 @@ class DetailPerhitungan extends Component
       }
     }
 
-    $questions = Question::whereHas('optionQuestions', function ($query) use ($data_dosen_id) {
-      return $query->whereHas('questionAnswer', function ($query) use ($data_dosen_id) {
-        return $query->whereHas('dataJadwal', function ($query) use ($data_dosen_id) {
-          return $query->whereHas('dosen', function ($query) use ($data_dosen_id) {
-            return $query->where('data_dosen_id', $data_dosen_id);
-          });
-        });
-      });
-    })->get();
-    $data = [];
-    $charts = [];
-    foreach ($questions as $key => $question) {
-      $data[$question->id][1] = 0;
-      $data[$question->id][2] = 0;
-      $data[$question->id][3] = 0;
-      $data[$question->id][4] = 0;
-      $data[$question->id][5] = 0;
-      $question_answers = QustionAnswerDetail::whereHas('dataJadwal', function ($query) use ($data_dosen_id) {
-        return $query->whereHas('dosen', function ($query) use ($data_dosen_id) {
-          return $query->where('data_dosen_id', $data_dosen_id);
-        });
-      })->whereHas('optionQuestion', function ($query) use ($question) {
-        $query->where('question_id', $question->id);
-      })->groupBy('user_id')->get();
-      foreach ($question_answers as $key => $answer) {
-        if (isset($data[$question->id][$answer->optionQuestion->bobot_jawaban])) {
-          $data[$question->id][$answer->optionQuestion->bobot_jawaban] += 1;
+    $values[1] = 0;
+    $values[2] = 0;
+    $values[3] = 0;
+    $values[4] = 0;
+    $values[5] = 0;
+    foreach ($lists as $key => $item) {
+      foreach ($item->qustionAnswerDetails as $key => $attribute) {
+        if (isset($value[$attribute->optionQuestion->bobot_jawaban])) {
+          $value[$attribute->optionQuestion->bobot_jawaban] += 1;
         }
       }
     }
 
-    foreach ($questions as $key => $question) {
-      $charts[] = [
-        'id' => $question->id,
-        'labels' => ['sangat tidak baik', 'tidak baik', 'cukup baik', 'baik', 'sangat baik'],
-        'values' => [
-          $data[$question->id][1],
-          $data[$question->id][2],
-          $data[$question->id][3],
-          $data[$question->id][4],
-          $data[$question->id][5],
-        ]
-      ];
-    }
+
+
+    $charts = [
+      'labels' => ['sangat tidak baik', 'tidak baik', 'cukup baik', 'baik', 'sangat baik'],
+      'values' => [
+        $values[1],
+        $values[2],
+        $values[3],
+        $values[4],
+        $values[5],
+      ]
+    ];
 
     $this->perhitungan = $final_data;
     $this->chartData = $charts;
