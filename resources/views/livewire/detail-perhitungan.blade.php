@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title text-capitalize">
-            <a href="{{route('data.perhitungan')}}">
+            <a href="{{route('data-perhitungan')}}">
               <span><i class="fas fa-arrow-left mr-3 text-capitalize"></i>Perhitungan Kinerja</span>
             </a>
           </h4>
