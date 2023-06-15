@@ -116,6 +116,7 @@ class DetailPerhitungan extends Component
     $this->perhitungan = $final_data;
     $this->chartData = $charts;
     $this->items =  $lists;
+    dd($this->chartData);
   }
 
 
