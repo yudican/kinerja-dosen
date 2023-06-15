@@ -25,7 +25,7 @@ class DetailPerhitungan extends Component
       $lists = DataJadwal::where('data_dosen_id', $data_dosen_id)->where('data_semester_id', $semester_id)->whereHas('qustionAnswerDetails')->get();
     }
 
-    dd($lists);
+
     $data_cluster = [];
     $dataset = [];
 
@@ -35,7 +35,7 @@ class DetailPerhitungan extends Component
       //     $attribute->optionQuestion->bobot_jawaban;
       // }
     }
-    // dd($dataset);
+    dd($dataset);
     $space = new Space(count($dataset[0]));
     // $kmeans = new KMeans(3, KMeans::INIT_RANDOM);
     // add points to space
