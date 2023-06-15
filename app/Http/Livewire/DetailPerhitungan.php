@@ -75,8 +75,8 @@ class DetailPerhitungan extends Component
     $values[5] = 0;
     foreach ($lists as $key => $item) {
       foreach ($item->qustionAnswerDetails as $key => $attribute) {
-        if (isset($value[$attribute->optionQuestion->bobot_jawaban])) {
-          $value[$attribute->optionQuestion->bobot_jawaban] += 1;
+        if (isset($values[$attribute->optionQuestion->bobot_jawaban])) {
+          $values[$attribute->optionQuestion->bobot_jawaban] += 1;
         }
       }
     }
