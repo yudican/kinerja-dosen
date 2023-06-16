@@ -69,7 +69,7 @@
         document.addEventListener('livewire:load', function(e) {
             
             window.livewire.on('showModal', (data) => {
-                $('#form-modal').modal('show')
+                $('#confirm-modal').modal('show')
             });
 
             window.livewire.on('closeModal', (data) => {
