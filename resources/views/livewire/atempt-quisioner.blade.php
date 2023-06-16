@@ -58,7 +58,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" wire:click='store' class="btn btn-primary btn-sm"><i class="fa fa-check pr-2"></i>Ya, Simpan</button>
-                    <button class="btn btn-danger btn-sm" wire:click='$emit(closeModal)'><i class="fa fa-times pr-2"></i>Batal</a>
+                    <button class="btn btn-danger btn-sm" wire:click="$emit('closeModal')"><i class="fa fa-times pr-2"></i>Batal</a>
                 </div>
             </div>
         </div>
