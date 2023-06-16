@@ -40,7 +40,7 @@
                     </div>
                     @endforeach
 
-                    <button class="btn btn-primary mt-3" wire:click="$emit(showModal)">Kirim</button>
+                    <button class="btn btn-primary mt-3" wire:click="$emit('showModal')">Kirim</button>
                 </div>
             </div>
         </div>
